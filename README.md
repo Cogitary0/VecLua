@@ -35,11 +35,8 @@ function vector2:dot(vector: vec2) -> number
 Vector (internal) product
 
 ```lua
-function vector2:lerp(
-                      --Target vector
-                      b:vec2,
-                      --Interpolation coefficient (0 to 1)
-                      t:number
+function vector2:lerp(b:vec2,--Target vector
+                      t:number--Interpolation coefficient (0 to 1)
                       ) -> vec2
 ```
 Linear vector interpolation
@@ -65,7 +62,7 @@ Rotate a vector
 ### Operations with vectors
 
 ```lua
-    local vec2 = require("core:vector2")
+    local vec2 = require("src.vector2")
 
     local v1 = vec2(5, 10)
     local v2 = vec2(10, 15)
@@ -160,7 +157,7 @@ Rotate a vector
 
 ```lua
 
-local vec3 = require("core:vector3")
+local vec3 = require("src.vector3")
 
 local v1 = vec3(1, 2, 3)
 local v2 = vec3(4, 5, 6)
