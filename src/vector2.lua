@@ -4,9 +4,7 @@ local vector2 =
     __call = function(vector2, x, y)
             return vector2:new(x, y) end
 }
-
 vector2.__index = vector2
-
 
 -- vec2 cocnrtuct
 function vector2:new(x, y)
