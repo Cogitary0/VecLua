@@ -14,6 +14,7 @@ function vector3:new(x, y, z)
         print("\n(( TypeError : new vec3))\nType arg vec3(x, y, z) = " .. "(" .. type(x) .. ", " .. type(y) .. ", " .. type(z) .. ")")
         error("Invalid input argument. Expected a vector obj. [ vec3(scalar, scalar, scalar) ]\n\n")
     end
+    
     local obj = {
       x = x or 0,
       y = y or 0,
@@ -119,9 +120,11 @@ function vector3:lerp(b, t)
         print("\n(( TypeError : lerp(vec3) ))\nType arg lerp(vec3, number)")
         error("Invalid input argument. Expected a vector3 object\n")
     end
+
     if type(t) ~= "number" or t < 0 or t > 1 then
         error("Invalid input argument. Expected a number between 0 and 1 .. (0 <= t <= 1)\n")
     end
+    
     return vector3:new(self.x + t * (b.x - self.x), self.y + t * (b.y - self.y), self.z + t * (b.z - self.z));
 end
 
@@ -134,6 +137,7 @@ function vector3:dist2line(point1, point2)
         print("\n(( TypeError : dist2line(vec3) ))\nType arg dist2line(vector3 , vector3)")
         error("Invalid input argument. Expected two vector3 objects\n")
     end
+    
     local line_vector = point2 - point1
     local point_to_line = self - point1
     local projection = point_to_line - line_vector:proj(point_to_line)
@@ -148,12 +152,16 @@ function vector3:abtw(vector)
     if type(vector) == "number" then
         print("\n(( TypeError : abtw(vec3) ))\nType arg abtw(vector3)")
         error("Invalid input argument. Expected a vector3 object\n")
+
     end
+
     local dot_prod = self:dot(vector)
     local len_prod = self:len() * vector:len()
+
     if len_prod == 0 then
         return 0
     end
+
     return math.acos(dot_prod / len_prod)
 end
 
@@ -170,25 +178,31 @@ function vector3:rot(angle, axis, convert2deg)
 
     if type(axis) == "string" then
         local cx, sx = math.cos(angle), math.sin(angle)
+
         if axis == "x" then
-            local x, y, z = self.x, self.y, self.z
+            local y, z = self.y, self.z
             self.y = cx * y - sx * z
             self.z = sx * y + cx * z
+
         elseif axis == "y" then
-            local x, y, z = self.x, self.y, self.z
+            local x, z = self.x, self.z
             self.x = cx * x + sx * z
             self.z = -sx * x + cx * z
+
         elseif axis == "z" then
-            local x, y, z = self.x, self.y, self.z
+            local x, y = self.x, self.y
             self.x = cx * x - sx * y
             self.y = sx * x + cx * y
+
         end
     elseif axis == nil then
         local cx, sx, cy, sy = math.cos(angle), math.sin(angle), math.cos(angle), math.sin(angle)
         local x, y, z = self.x, self.y, self.z
+
         self.x = cx * x - sx * y
         self.y = sx * x + cx * y
         self.z = cy * z - sy * self:len()
+
         local len = self:len()
         if len ~= 0 then
             self.z = self.z / len
@@ -204,16 +218,19 @@ function vector3.__add(value_1, value_2)
         if value_1 == 0 then
             return value_2
         end
+
         return vector3:new(value_2.x + value_1, value_2.y + value_1, value_2.z + value_1)
     else
         if type(value_2) == "number" then
             if value_2 == 0 then
                 return value_1
             end
+
             return vector3:new(value_1.x + value_2, value_1.y + value_2, value_1.z + value_2)
         else
             if value_1.z ~= nil and value_2.z ~= nil then
                 return vector3:new(value_1.x + value_2.x, value_1.y + value_2.y, value_1.z + value_2.z)
+
             else
                 return vector3:new(value_1.x + value_2.x, value_1.y + value_2.y)
             end
