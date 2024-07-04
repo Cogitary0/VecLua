@@ -35,8 +35,8 @@ function vector2:dot(vector: vec2) -> number
 Vector (internal) product
 
 ```lua
-function vector2:lerp(b:vec2,--Target vector
-                      t:number--Interpolation coefficient (0 to 1)
+function vector2:lerp(b:vec2, --Target vector
+                      t:number --Interpolation coefficient (0 to 1)
                       ) -> vec2
 ```
 Linear vector interpolation
@@ -124,7 +124,7 @@ function vector3:dot(vector: vec3) -> number
 Vector (internal) product
 
 ```lua
-function vector3:lerp(b:vec3,--Target vector
+function vector3:lerp(b:vec3, --Target vector
                       t:number --Interpolation coefficient (0 to 1)
                       ) -> vec3
 ```
