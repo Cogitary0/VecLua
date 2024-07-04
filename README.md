@@ -55,14 +55,10 @@ function vector2:cross(vector: vec2) -> number
 Vector (external) product
 
 ```lua
-function vector2:rot(
-                    --The angle of rotation of the vector at a given angle (in radians)
-                    angle: number->rad,
-                    --Rotation of the vector relative to the axes ("x", "y", "z")
-                    axis: str,
-                    --If true, then the rotation angle is converted automatically from degrees to radians
-                    convert2deg:bool
-                    ) -> vec2
+function vector2:rot(angle: number->rad, --The angle of rotation of the vector at a given angle (in radians)
+                     axis: str, --Rotation of the vector relative to the axes ("x", "y", "z")
+                     convert2deg: bool --If true, then the rotation angle is converted automatically from degrees to radians
+                     ) -> vec2
 ```
 Rotate a vector
 
@@ -131,11 +127,8 @@ function vector3:dot(vector: vec3) -> number
 Vector (internal) product
 
 ```lua
-function vector3:lerp(
-                      --Target vector
-                       b:vec3,
-                       --Interpolation coefficient (0 to 1)
-                       t:number
+function vector3:lerp(b:vec3,--Target vector
+                      t:number --Interpolation coefficient (0 to 1)
                       ) -> vec3
 ```
 Linear vector interpolation
@@ -156,13 +149,9 @@ function vector3:cross(vector: vec3) -> number
 Vector (external) product
 
 ```lua
-function vector3:rot(
-                    --The angle of rotation of the vector at a given angle (in radians)
-                    angle: number->rad,
-                    --Rotation of the vector relative to the axes ("x", "y", "z")
-                    axis: str,
-                    --If true, then the rotation angle is converted automatically from degrees to radians
-                    convert2deg:bool
+function vector3:rot(angle: number->rad, --The angle of rotation of the vector at a given angle (in radians)
+                     axis: str,--Rotation of the vector relative to the axes ("x", "y", "z")
+                     convert2deg:bool --If true, then the rotation angle is converted automatically from degrees to radians
                     ) -> vec2
 ```
 Rotate a vector
